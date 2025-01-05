@@ -20,11 +20,18 @@
             background: url('https://i.imgur.com/I5eJRo4.jpg') no-repeat center/cover;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 50px 20px;
             height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 200px;
+                background-size: cover;
+            }
         }
 
         /* Navigation Bar */
@@ -41,12 +48,19 @@
         .topbar a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 10px;
             font-weight: bold;
         }
 
         .topbar a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .topbar a {
+                margin: 0 5px;
+                font-size: 12px;
+            }
         }
 
         /* Main Content */
@@ -77,6 +91,7 @@
             margin-bottom: 30px;
         }
 
+        /* Tokenomics Section */
         .tokenomics {
             display: flex;
             align-items: center;
@@ -99,11 +114,31 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        iframe {
+        @media (max-width: 768px) {
+            .tokenomics {
+                flex-direction: column;
+            }
+
+            .tokenomics .tokenomics-image {
+                order: -1; /* Image appears above text on mobile */
+            }
+        }
+
+        /* YouTube Video Section */
+        .how-to-buy iframe {
             display: block;
             margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .how-to-buy iframe {
+                width: 90%;
+            }
         }
 
         /* Footer */
@@ -154,12 +189,7 @@
             <h2>What is $BRACE?</h2>
             <p>
                 $BRACE, inspired by the heartwarming story of Wesley, the brace-wearing Golden Retriever pup, brings smiles and wholesome vibes to the blockchain! 
-                This lovable pup reminds us that even a little brace can lead to a legendary grin. Join $BRACE as we celebrate the timeless charm of everyone’s 
-                favorite ‘brace dog’ - while we embark on a journey to uncover: <em>What does Wesley do today?</em>
-            </p>
-            <p>
-                $BRACE is a playful, community-driven meme coin on the Solana blockchain, inspired by the legendary story of Wesley, the brace-wearing Golden 
-                Retriever pup. With Solana’s fast, low-cost transactions and Wesley’s iconic charm, $BRACE brings wholesome vibes to the crypto space.
+                Join $BRACE as we celebrate the timeless charm of everyone’s favorite ‘brace dog’ - while we embark on a journey to uncover: <em>What does Wesley do today?</em>
             </p>
         </section>
 
@@ -185,13 +215,13 @@
         <!-- How to Buy Section -->
         <section id="how-to-buy">
             <h2>How to Buy</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
         </section>
 
         <!-- Disclaimer Section -->
         <section id="disclaimer">
             <h2>Disclaimer</h2>
-            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return. It is completely useless and for entertainment purposes only.</p>
+            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return.</p>
         </section>
     </div>
 
