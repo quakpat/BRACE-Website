@@ -13,6 +13,7 @@
             background-color: #d5bf9b;
             color: #8d6748;
             line-height: 1.6;
+            text-align: center;
         }
 
         /* Header Section */
@@ -30,7 +31,6 @@
         @media (max-width: 768px) {
             header {
                 height: 200px;
-                background-size: cover;
             }
         }
 
@@ -71,6 +71,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h1, h2 {
@@ -87,7 +88,6 @@
         }
 
         .intro {
-            text-align: center;
             margin-bottom: 30px;
         }
 
@@ -96,7 +96,8 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .tokenomics .tokenomics-text {
@@ -120,7 +121,7 @@
             }
 
             .tokenomics .tokenomics-image {
-                order: -1; /* Image appears above text on mobile */
+                order: -1;
             }
         }
 
@@ -133,8 +134,8 @@
         .how-to-buy ul {
             list-style-type: none;
             padding: 0;
+            display: inline-block;
             text-align: left;
-            max-width: 600px;
             margin: 0 auto 20px;
         }
 
@@ -163,6 +164,12 @@
             .how-to-buy iframe {
                 width: 90%;
             }
+        }
+
+        /* Disclaimer Section */
+        .disclaimer {
+            margin-top: 30px;
+            text-align: center;
         }
 
         /* Footer */
@@ -223,8 +230,8 @@
                 <ul>
                     <li><strong>Ticker:</strong> $BRACE</li>
                     <li><strong>Name:</strong> Brace Dog</li>
-                    <li><strong>Buy Tax:</strong> 0% on all Buy Transactions</li>
-                    <li><strong>Sell Tax:</strong> 0% on all Sell Transactions</li>
+                    <li><strong>Buy Tax:</strong> 0%</li>
+                    <li><strong>Sell Tax:</strong> 0%</li>
                     <li><strong>Supply:</strong> 1,000,000,000</li>
                     <li><strong>LP:</strong> Locked</li>
                 </ul>
@@ -238,17 +245,17 @@
         <section id="how-to-buy" class="how-to-buy">
             <h2>How to Buy</h2>
             <ul>
-                <li><strong>Create a wallet with Phantom:</strong> Visit <a href="https://phantom.app" target="_blank">phantom.app</a>.</li>
-                <li><strong>Get some $SOL:</strong> Deposit or purchase $SOL into your Phantom wallet.</li>
-                <li><strong>Swap $SOL for $BRACE:</strong> Paste the $BRACE token address in the SWAP section.</li>
-                <li><strong>You are now a $BRACE holder!</strong></li>
+                <li>Create a wallet with Phantom: Visit <a href="https://phantom.app">phantom.app</a></li>
+                <li>Get some $SOL: Purchase or deposit into your wallet</li>
+                <li>Swap $SOL for $BRACE</li>
+                <li>Enjoy being a $BRACE holder!</li>
             </ul>
             <iframe src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
         </section>
-
-        <footer>
-            <p>© 2025 Brace Dog. All rights reserved.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>© 2025 Brace Dog. All rights reserved.</p>
+    </footer>
 </body>
 </html>
