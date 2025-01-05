@@ -102,6 +102,11 @@
 
         .tokenomics .tokenomics-text {
             flex: 1;
+            text-align: left;
+        }
+
+        .tokenomics .tokenomics-text p {
+            margin: 5px 0;
         }
 
         .tokenomics .tokenomics-image {
@@ -170,6 +175,12 @@
         .disclaimer {
             margin-top: 30px;
             text-align: center;
+            font-size: 0.9em;
+            color: #6b4f3d;
+            background: #f9f4f0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         /* Footer */
@@ -227,14 +238,12 @@
         <section id="tokenomics" class="tokenomics">
             <div class="tokenomics-text">
                 <h2>Tokenomics</h2>
-                <ul>
-                    <li><strong>Ticker:</strong> $BRACE</li>
-                    <li><strong>Name:</strong> Brace Dog</li>
-                    <li><strong>Buy Tax:</strong> 0%</li>
-                    <li><strong>Sell Tax:</strong> 0%</li>
-                    <li><strong>Supply:</strong> 1,000,000,000</li>
-                    <li><strong>LP:</strong> Locked</li>
-                </ul>
+                <p><strong>Ticker:</strong> $BRACE</p>
+                <p><strong>Name:</strong> Brace Dog</p>
+                <p><strong>Buy Tax:</strong> 0%</p>
+                <p><strong>Sell Tax:</strong> 0%</p>
+                <p><strong>Supply:</strong> 1,000,000,000</p>
+                <p><strong>LP:</strong> Locked</p>
             </div>
             <div class="tokenomics-image">
                 <img src="https://i.imgur.com/yBWJI7G.jpg" alt="$BRACE Tokenomics Image">
@@ -250,12 +259,19 @@
                 <li>Swap $SOL for $BRACE</li>
                 <li>Enjoy being a $BRACE holder!</li>
             </ul>
-            <iframe src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
+        </section>
+
+        <section id="disclaimer" class="disclaimer">
+            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return. It is purely for entertainment purposes.</p>
         </section>
     </div>
 
     <footer>
         <p>© 2025 Brace Dog. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://x.com/BraceDogSolana">X/Twitter</a> |
+            <a href="https://t.me/BraceDog">Telegram</a>
+        </div>
     </footer>
 </body>
 </html>
