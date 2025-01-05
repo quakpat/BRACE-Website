@@ -130,10 +130,23 @@
             margin-bottom: 30px;
         }
 
-        .how-to-buy ol {
+        .how-to-buy ul {
+            list-style-type: none;
+            padding: 0;
             text-align: left;
             max-width: 600px;
             margin: 0 auto 20px;
+        }
+
+        .how-to-buy ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .how-to-buy ul li::before {
+            content: "✅";
+            margin-right: 10px;
         }
 
         .how-to-buy iframe {
@@ -199,8 +212,7 @@
         <section id="what-is">
             <h2>What is $BRACE?</h2>
             <p>
-                $BRACE, inspired by the heartwarming story of Wesley, the brace-wearing Golden Retriever pup, brings smiles and wholesome vibes to the blockchain! 
-                Join $BRACE as we celebrate the timeless charm of everyone’s favorite ‘brace dog’ - while we embark on a journey to uncover: <em>What does Wesley do today?</em>
+                $BRACE, inspired by the heartwarming story of Wesley, the brace-wearing Golden Retriever pup, brings smiles and wholesome vibes to the blockchain!
             </p>
         </section>
 
@@ -225,24 +237,18 @@
         <!-- How to Buy Section -->
         <section id="how-to-buy" class="how-to-buy">
             <h2>How to Buy</h2>
-            <ol>
-                <li>✅ **Create a wallet with Phantom:** Visit <a href="https://phantom.app" target="_blank">phantom.app</a>.</li>
-                <li>✅ **Get some $SOL:** Deposit or purchase $SOL into your Phantom wallet.</li>
-                <li>✅ **Swap $SOL for $BRACE:** Paste the $BRACE token address in the SWAP section.</li>
-                <li>✅ **You are now a $BRACE holder!**</li>
-            </ol>
+            <ul>
+                <li><strong>Create a wallet with Phantom:</strong> Visit <a href="https://phantom.app" target="_blank">phantom.app</a>.</li>
+                <li><strong>Get some $SOL:</strong> Deposit or purchase $SOL into your Phantom wallet.</li>
+                <li><strong>Swap $SOL for $BRACE:</strong> Paste the $BRACE token address in the SWAP section.</li>
+                <li><strong>You are now a $BRACE holder!</strong></li>
+            </ul>
             <iframe src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
         </section>
 
-        <!-- Disclaimer Section -->
-        <section id="disclaimer">
-            <h2>Disclaimer</h2>
-            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return.</p>
-        </section>
+        <footer>
+            <p>© 2025 Brace Dog. All rights reserved.</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>© 2025 Brace Dog. All rights reserved.</p>
-    </footer>
 </body>
 </html>
