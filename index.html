@@ -214,7 +214,7 @@
                                 <div class="border-black border-2 w-full p-2">
                                     <h3 class="mb-2 text-white text-3xl text-shadow tracking-wide font-extrabold uppercase">Swap</h3>
                                     <div class="border-black border-2 bg-secondary flex flex-col justify-center">
-                                        <div id="jupiter-terminal"></div>
+                                        <!-- Empty div for future integration -->
                                     </div>
                                 </div>
                             </div>
@@ -260,22 +260,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        function loadJupiterScript() {
-            const script = document.createElement('script');
-            script.src = 'https://terminal.jup.ag/main-v2.js';
-            script.onload = function() {
-                window.Jupiter.init({
-                    displayMode: 'integrated',
-                    integratedTargetId: 'jupiter-terminal',
-                    endpoint: 'https://api.mainnet-beta.solana.com'
-                });
-            };
-            document.body.appendChild(script);
-        }
-
-        document.addEventListener('DOMContentLoaded', loadJupiterScript);
-    </script>
 </body>
 </html>
