@@ -280,42 +280,22 @@
         </div>
     </div>
 
-    <script>
-        // Function to initialize Jupiter Terminal
-        function initJupiter() {
-            try {
-                console.log('Starting Jupiter initialization...');
-                window.Jupiter.init({
-                    displayMode: 'integrated',
-                    integratedTargetId: 'jupiter-terminal',
-                    defaultExplorer: 'Solscan',
-                    defaultPair: {
-                        fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                        toMint: 'H33XL6HHDReCVRgSApZpsXM7Hy7JGyLztRJaGxjapump'  // Your token
-                    },
-                    containerStyles: {
-                        width: '100%',
-                        height: '600px',
-                        border: '1px solid #E5E7EB',
-                        borderRadius: '16px',
-                    }
-                });
-                console.log('Jupiter initialization completed.');
-            } catch (error) {
-                console.error('Jupiter initialization failed:', error);
-                const terminal = document.getElementById('jupiter-terminal');
-                if (terminal) {
-                    terminal.innerHTML = `<p class="text-red-600">Failed to load the Jupiter terminal. Please try again later.</p>`;
-                }
-            }
-        }
+    <div class="border-black border-2 bg-secondary flex flex-col justify-center">
+        <iframe 
+            src="https://jup.ag/swap/SOL-APPLE" 
+            frameborder="0"
+            title="Jupiter Swap"
+            style="width: 100%; height: 600px; border: none;"
+        ></iframe>
+    </div>
 
-        // Function to dynamically load Jupiter script
+    <!-- Remove or comment out the old Jupiter initialization code -->
+    <!--
+    <script>
         function loadJupiterScript() {
             const script = document.createElement('script');
             script.src = 'https://terminal.jup.ag/main-v2.js';
             script.onload = function() {
-                console.log('Jupiter script loaded successfully.');
                 initJupiter();
             };
             script.onerror = function() {
@@ -328,46 +308,11 @@
             document.body.appendChild(script);
         }
 
-        // Start the process when the DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Loading Jupiter script...');
             loadJupiterScript();
         });
-
-        // Phantom Wallet Connection Logic
-        async function connectPhantomWallet() {
-            try {
-                const { solana } = window;
-
-                if (!solana?.isPhantom) {
-                    alert('Please install Phantom wallet!');
-                    return;
-                }
-
-                const response = await solana.connect();
-                const publicKey = response.publicKey.toString();
-                console.log('Wallet connected:', publicKey);
-
-                const walletStatus = document.getElementById('wallet-status');
-                if (walletStatus) {
-                    walletStatus.textContent =
-                        'Connected: ' + publicKey.slice(0, 4) + '...' + publicKey.slice(-4);
-                }
-            } catch (err) {
-                console.error('Wallet connection failed:', err);
-                alert('Failed to connect wallet: ' + err.message);
-            }
-        }
-
-        // Add event listener for wallet connection button
-        document.addEventListener('DOMContentLoaded', function () {
-            const walletButton = document.getElementById('connect-wallet');
-            if (walletButton) {
-                walletButton.addEventListener('click', connectPhantomWallet);
-            } else {
-                console.error('Connect wallet button not found.');
-            }
-        });
     </script>
+    -->
 </body>
 </html>
