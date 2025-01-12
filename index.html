@@ -74,6 +74,25 @@
         .scrolling-wrapper {
             display: flex;
         }
+
+        .connect-wallet-button {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .connect-wallet-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08);
+        }
+
+        .connect-wallet-button:active {
+            transform: translateY(0);
+        }
     </style>
     <script src="https://terminal.jup.ag/main-v2.js"></script>
 </head>
@@ -182,11 +201,17 @@
                             <h3 class="text-xl font-semibold mb-2">Connect your wallet & swap</h3>
                             <p class="text-gray-700 mb-4">Connect your Phantom Wallet and swap SOL for $BRACE using Jupiter Exchange below.</p>
                             <div class="flex flex-col items-start gap-4">
-                                <button id="connect-wallet" class="gradient-button hover:opacity-80 transition">
-                                    Connect Phantom Wallet
+                                <button id="connect-wallet" class="connect-wallet-button">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        Connect Phantom Wallet
+                                    </div>
                                 </button>
-                                <div id="wallet-status" class="text-gray-600"></div>
-                                <div id="jupiter-terminal" class="w-full mt-4"></div>
+                                <div id="wallet-status" class="text-gray-600 font-medium"></div>
+                                <div id="jupiter-terminal" class="w-full mt-4 max-w-2xl"></div>
                             </div>
                         </div>
                     </div>
@@ -213,15 +238,6 @@
         <!-- Disclaimer -->
         <div class="text-center text-sm text-gray-600 mt-16">
             <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return. For entertainment purposes only.</p>
-        </div>
-
-        <!-- Add this in your HTML where you want the swap interface -->
-        <div class="flex flex-col items-center gap-4">
-            <button id="connect-wallet" class="gradient-button">
-                Connect Phantom Wallet
-            </button>
-            <div id="wallet-status" class="text-gray-400"></div>
-            <div id="jupiter-terminal" class="w-full max-w-xl mt-4"></div>
         </div>
     </main>
 
