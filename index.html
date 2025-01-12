@@ -211,9 +211,13 @@
                                     </div>
                                 </button>
                                 <div id="wallet-status" class="text-gray-600 font-medium"></div>
-                            </div>
-                            <div class="mt-6 w-full">
-                                <div id="jupiter-terminal" style="min-height: 600px; width: 100%;"></div>
+                                
+                                <!-- Jupiter Terminal Container -->
+                                <div class="w-full mt-4">
+                                    <div id="jupiter-terminal-container" class="w-full">
+                                        <div id="jupiter-terminal"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -293,12 +297,6 @@
         </div>
     </div>
 
-    <div class="container mx-auto px-4 py-8">
-        <div id="jupiter-terminal-container" class="w-full max-w-2xl mx-auto">
-            <div id="jupiter-terminal"></div>
-        </div>
-    </div>
-
     <script>
     // Initialize Jupiter Terminal
     window.onload = function() {
@@ -319,7 +317,7 @@
         });
     };
 
-    // Wallet connection logic remains the same
+    // Wallet connection logic remains unchanged
     async function connectPhantomWallet() {
         try {
             const { solana } = window;
