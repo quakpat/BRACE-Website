@@ -290,65 +290,45 @@
         </div>
     </div>
 
-    <!-- Jupiter Terminal at the bottom -->
-    <div class="container mx-auto px-4 py-8">
-        <div id="integrated-terminal" class="w-full max-w-2xl mx-auto p-4 rounded-2xl bg-white/5">
-            <script>
-                window.Jupiter.init({
-                    displayMode: "integrated",
-                    integratedTargetId: "integrated-terminal",
-                    endpoint: "https://solana-mainnet.g.alchemy.com/v2/your-api-key", // You'll need to replace this with a real Solana RPC endpoint
-                    strictTokenList: true,
-                    defaultExplorer: "Solscan",
-                    defaultPair: {
-                        fromMint: "So11111111111111111111111111111111111111112", // SOL
-                        toMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump"  // BRACE
-                    },
-                    containerStyles: {
-                        width: "100%",
-                        height: "600px",
-                        border: "1px solid #E5E7EB",
-                        borderRadius: "16px",
-                        background: "white"
-                    }
-                });
-            </script>
-        </div>
-    </div>
+    <!-- Jupiter Terminal -->
+    <div id="integrated-terminal"></div>
 
+    <!-- Jupiter initialization -->
+    <script src="https://terminal.jup.ag/main-v1.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Simple Jupiter initialization
-        window.Jupiter.init({
-            displayMode: 'integrated',
-            integratedTargetId: 'jupiter-terminal',
-            defaultPair: {
-                fromMint: 'So11111111111111111111111111111111111111112',
-                toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'
-            }
-        });
-    });
+        window.onload = function() {
+            window.Jupiter.init({
+                mode: "integrated",
+                endpoint: "https://api.mainnet-beta.solana.com",
+                integratedTargetId: "integrated-terminal",
+                defaultExplorer: "Solscan",
+                defaultPair: {
+                    fromMint: "So11111111111111111111111111111111111111112",
+                    toMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump"
+                }
+            });
+        };
+    </script>
 
-    // Wallet connection logic remains unchanged
-    async function connectPhantomWallet() {
-        try {
-            const { solana } = window;
-            
-            if (!solana?.isPhantom) {
-                alert('Please install Phantom wallet!');
-                return;
+    <!-- Keep the wallet connection script separate -->
+    <script>
+        async function connectPhantomWallet() {
+            try {
+                const { solana } = window;
+                if (!solana?.isPhantom) {
+                    alert('Please install Phantom wallet!');
+                    return;
+                }
+                const response = await solana.connect();
+                const publicKey = response.publicKey.toString();
+                document.getElementById('wallet-status').textContent = 'Connected: ' + publicKey.slice(0,4) + '...' + publicKey.slice(-4);
+            } catch (err) {
+                console.error(err);
+                alert('Failed to connect wallet: ' + err.message);
             }
-
-            const response = await solana.connect();
-            const publicKey = response.publicKey.toString();
-            document.getElementById('wallet-status').textContent = 'Connected: ' + publicKey.slice(0,4) + '...' + publicKey.slice(-4);
-        } catch (err) {
-            console.error(err);
-            alert('Failed to connect wallet: ' + err.message);
         }
-    }
 
-    document.getElementById('connect-wallet').addEventListener('click', connectPhantomWallet);
+        document.getElementById('connect-wallet').addEventListener('click', connectPhantomWallet);
     </script>
 </body>
 </html>
