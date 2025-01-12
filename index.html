@@ -298,26 +298,19 @@
     </div>
 
     <script>
-    // Initialize Jupiter Terminal
-    window.onload = function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simple Jupiter initialization
         window.Jupiter.init({
             displayMode: 'integrated',
             integratedTargetId: 'jupiter-terminal',
-            defaultExplorer: 'Solscan',
             defaultPair: {
-                fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
-            },
-            containerStyles: {
-                width: '100%',
-                height: '600px',
-                border: '1px solid #E5E7EB',
-                borderRadius: '16px',
+                fromMint: 'So11111111111111111111111111111111111111112',
+                toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'
             }
         });
-    };
+    });
 
-    // Wallet connection logic
+    // Wallet connection logic remains unchanged
     async function connectPhantomWallet() {
         try {
             const { solana } = window;
@@ -329,8 +322,6 @@
 
             const response = await solana.connect();
             const publicKey = response.publicKey.toString();
-            console.log('Connected with Public Key:', publicKey);
-            
             document.getElementById('wallet-status').textContent = 'Connected: ' + publicKey.slice(0,4) + '...' + publicKey.slice(-4);
         } catch (err) {
             console.error(err);
