@@ -290,8 +290,10 @@
         </div>
     </div>
 
-    <!-- Jupiter Terminal -->
-    <div id="integrated-terminal"></div>
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+        <!-- Jupiter Terminal -->
+        <div id="integrated-terminal" style="width: 100%; height: 100vh; max-width: 500px;"></div>
+    </div>
 
     <!-- Jupiter initialization -->
     <script src="https://terminal.jup.ag/main-v1.js"></script>
@@ -305,6 +307,16 @@
                 defaultPair: {
                     fromMint: "So11111111111111111111111111111111111111112",
                     toMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump"
+                },
+                containerStyles: {
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    position: 'relative',
+                    zIndex: '50',
+                    background: 'white',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '16px',
                 }
             });
         };
