@@ -108,7 +108,6 @@
             margin-bottom: 2rem;
         }
     </style>
-    <script src="https://terminal.jup.ag/main-v2.js"></script>
 </head>
 <body class="bg-gradient-to-b from-[#d5bf9b] to-[#f9f4f0] min-h-screen">
     <!-- Modern floating navigation -->
@@ -284,41 +283,45 @@
         </div>
     </div>
 
+    <script src="https://terminal.jup.ag/main-v2.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const terminalContainer = document.getElementById('jupiter-terminal');
-            
-            // Ensure the container exists
-            if (!terminalContainer) {
-                console.error('Jupiter terminal container not found.');
-                return;
-            }
+        // Wait for both DOM and Jupiter script to be fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const terminalContainer = document.getElementById('jupiter-terminal');
+                
+                // Ensure the container exists
+                if (!terminalContainer) {
+                    console.error('Jupiter terminal container not found.');
+                    return;
+                }
 
-            // Initialize Jupiter with error handling
-            try {
-                console.log('Initializing Jupiter terminal...');
-                window.Jupiter.init({
-                    displayMode: 'integrated',
-                    integratedTargetId: 'jupiter-terminal',
-                    defaultExplorer: 'Solscan',
-                    defaultPair: {
-                        fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                        toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
-                    },
-                    containerStyles: {
-                        width: '100%',
-                        height: '600px',
-                        border: '1px solid #E5E7EB',
-                        borderRadius: '16px',
-                        display: 'block', // Force display
-                        visibility: 'visible', // Force visibility
-                    }
-                });
-                console.log('Jupiter terminal initialized successfully.');
-            } catch (error) {
-                console.error('Failed to initialize Jupiter terminal:', error);
-                terminalContainer.innerHTML = `<p class="text-red-600">Failed to load the Jupiter terminal. Please try again later.</p>`;
-            }
+                // Initialize Jupiter with error handling
+                try {
+                    console.log('Initializing Jupiter terminal...');
+                    window.Jupiter.init({
+                        displayMode: 'integrated',
+                        integratedTargetId: 'jupiter-terminal', // Make sure this matches the div ID exactly
+                        defaultExplorer: 'Solscan',
+                        defaultPair: {
+                            fromMint: 'So11111111111111111111111111111111111111112', // SOL
+                            toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
+                        },
+                        containerStyles: {
+                            width: '100%',
+                            height: '600px',
+                            border: '1px solid #E5E7EB',
+                            borderRadius: '16px',
+                            display: 'block',
+                            visibility: 'visible',
+                        }
+                    });
+                    console.log('Jupiter terminal initialized successfully.');
+                } catch (error) {
+                    console.error('Failed to initialize Jupiter terminal:', error);
+                    terminalContainer.innerHTML = `<p class="text-red-600">Failed to load the Jupiter terminal. Please try again later.</p>`;
+                }
+            }, 1000); // Added a 1-second delay to ensure everything is loaded
         });
 
         // Wallet connection logic
