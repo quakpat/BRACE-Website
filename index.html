@@ -292,6 +292,40 @@
     </div>
 
     <script>
+    const BRACE_TOKEN_ADDRESS = 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump';
+
+    function initializeJupiterSwap() {
+        // Configure Jupiter Terminal
+        window.Jupiter.init({
+            displayMode: 'integrated',
+            integratedTargetId: 'jupiter-terminal',
+            defaultExplorer: 'Solscan',
+            defaultPair: {
+                fromMint: 'So11111111111111111111111111111111111111112', // SOL
+                toMint: BRACE_TOKEN_ADDRESS, // BRACE token
+            },
+            containerStyles: {
+                width: '100%',
+                height: '500px',
+                border: '1px solid #2d2d2d',
+                borderRadius: '16px',
+                display: 'block', // Ensure it's visible
+            }
+        });
+    }
+
+    // Wait for both DOM and Jupiter script to load
+    function loadJupiter() {
+        if (window.Jupiter) {
+            initializeJupiterSwap();
+        } else {
+            // If Jupiter isn't loaded yet, wait and try again
+            setTimeout(loadJupiter, 100);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadJupiter);
+
     async function connectPhantomWallet() {
         try {
             const { solana } = window;
@@ -308,8 +342,8 @@
             // Update UI to show connected state
             document.getElementById('wallet-status').textContent = 'Connected: ' + publicKey.slice(0,4) + '...' + publicKey.slice(-4);
             
-            // Enable swap interface
-            document.getElementById('swap-interface').style.display = 'block';
+            // Make sure the swap interface is visible
+            document.getElementById('jupiter-terminal').style.display = 'block';
         } catch (err) {
             console.error(err);
             alert('Failed to connect wallet: ' + err.message);
@@ -318,33 +352,6 @@
 
     // Add click handler to connect button
     document.getElementById('connect-wallet').addEventListener('click', connectPhantomWallet);
-
-    const BRACE_TOKEN_ADDRESS = 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump';
-
-    function initializeJupiterSwap() {
-        const jupiterElement = document.getElementById('jupiter-terminal');
-        
-        // Configure Jupiter Terminal
-        window.Jupiter.init({
-            displayMode: 'integrated',
-            integratedTargetId: 'jupiter-terminal',
-            endpoint: 'https://solana-mainnet.g.alchemy.com/v2/your-api-key', // Replace with your endpoint
-            defaultExplorer: 'Solscan',
-            defaultPair: {
-                fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                toMint: BRACE_TOKEN_ADDRESS, // BRACE token
-            },
-            containerStyles: {
-                width: '100%',
-                height: '500px',
-                border: '1px solid #2d2d2d',
-                borderRadius: '16px',
-            }
-        });
-    }
-
-    // Call this after page load
-    document.addEventListener('DOMContentLoaded', initializeJupiterSwap);
     </script>
 </body>
 </html>
