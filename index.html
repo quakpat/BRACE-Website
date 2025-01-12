@@ -3,259 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="$BRACE - A Solana meme token inspired by Wesley, the brace-wearing Golden Retriever">
     <title>$BRACE - Brace Dog</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom styles -->
     <style>
-        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #8d6748;
+            --secondary: #d5bf9b;
+            --accent: #bfa58a;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #d5bf9b;
-            color: #8d6748;
-            line-height: 1.4;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* Header Section */
-        header {
-            background: url('https://imgur.com/91ra9UJ.jpg') no-repeat center/cover;
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            height: 250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        @media (max-width: 768px) {
-            header {
-                height: 200px;
-            }
-        }
-
-        /* Navigation Bar */
-        .topbar {
-            background-color: #8d6748;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .topbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-        }
-
-        .topbar a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .topbar a {
-                margin: 0 5px;
-                font-size: 12px;
-            }
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1, h2 {
-            color: #8d6748;
-        }
-
-        a {
-            color: #8d6748;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .intro {
-            margin-bottom: 30px;
-        }
-
-        /* Tokenomics Section */
-        .tokenomics {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .tokenomics iframe {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* How to Buy Section */
-        .how-to-buy {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .how-to-buy ul {
-            list-style-type: none;
-            padding: 0;
-            display: inline-block;
-            text-align: left;
-            margin: 0 auto 20px;
-        }
-
-        .how-to-buy ul li {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .how-to-buy ul li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-
-        .how-to-buy iframe {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .how-to-buy iframe {
-                width: 90%;
-            }
-        }
-
-        /* Disclaimer Section */
-        .disclaimer {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #6b4f3d;
-            background: #f9f4f0;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #bfa58a;
-            color: white;
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Section Anchors Adjustment */
-        section {
-            scroll-margin-top: 60px;
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
-<body>
-    <!-- Header with Image -->
-    <header></header>
-
-    <!-- Top Navigation Bar -->
-    <nav class="topbar">
-        <a href="#what-is">$BRACE</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#how-to-buy">How to Buy</a>
-        <a href="#full-story">Full story</a>
+<body class="bg-gradient-to-b from-[#d5bf9b] to-[#f9f4f0] min-h-screen">
+    <!-- Modern floating navigation -->
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 glass-effect px-6 py-3 rounded-full z-50 shadow-lg">
+        <div class="flex space-x-6 text-sm font-medium">
+            <a href="#what-is" class="text-white hover:text-opacity-80 transition">$BRACE</a>
+            <a href="#tokenomics" class="text-white hover:text-opacity-80 transition">Tokenomics</a>
+            <a href="#how-to-buy" class="text-white hover:text-opacity-80 transition">How to Buy</a>
+            <a href="#full-story" class="text-white hover:text-opacity-80 transition">Story</a>
+        </div>
     </nav>
 
-    <div class="container">
+    <!-- Hero Section -->
+    <header class="h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://imgur.com/91ra9UJ.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative z-10 text-center">
+            <h1 class="text-6xl font-bold text-white mb-4">$BRACE</h1>
+            <p class="text-xl text-white/90">The goodest boy on Solana</p>
+        </div>
+    </header>
 
-        <!-- What is $BRACE Section -->
-        <section id="what-is">
-            <h2>What is $BRACE?</h2>
-            <p>
-                $BRACE - inspired by the heartwarming story of Wesley, the brace-wearing Golden Retriever pup, brings smiles and wholesome vibes to the Solana blockchain!
-            </p>
-             <iframe src="https://www.youtube.com/embed/46BHIaLmOYQ?si=MJ5BD4dthO7Tny43" allowfullscreen></iframe>
-            <div>
-                <img src="https://i.imgur.com/yBWJI7G.jpg" alt="$BRACE Image" style="max-width: 100%; border-radius: 10px;">
+    <main class="max-w-6xl mx-auto px-4 py-16 space-y-32">
+        <!-- What is Section -->
+        <section id="what-is" class="scroll-mt-20">
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold gradient-text mb-8">What is $BRACE?</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            $BRACE is inspired by Wesley, the brace-wearing Golden Retriever pup, bringing wholesome vibes to the Solana blockchain!
+                        </p>
+                    </div>
+                    <div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/46BHIaLmOYQ" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
         </section>
-        
-                <!-- Tokenomics Section -->
-        <section id="tokenomics" class="tokenomics">
-            <div class="tokenomics-text">
-                <h2>Tokenomics</h2>
-                <p><strong>Ticker:</strong> $BRACE</p>
-                <p><strong>Name:</strong> Brace Dog</p>
-                <p><strong>Buy Tax:</strong> 0%</p>
-                <p><strong>Sell Tax:</strong> 0%</p>
-                <p><strong>Supply:</strong> 1,000,000,000</p>
-                <p><strong>LP:</strong> Locked</p>
-                <p><strong>Token Address:</strong> <a href="https://pump.fun/coin/gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump"> gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump</a></p>
-            </div>
-        </section>
-        
-                <!-- How to Buy Section -->
-        <section id="how-to-buy" class="how-to-buy">
-            <h2>How to Buy</h2>
-            <ul>
-                <li>Create a wallet with Phantom: Visit <a href="https://phantom.app"> phantom.app</a></li>
-                <li>Get some $SOL: Purchase or deposit into your wallet</li>
-                <li>Swap $SOL for $BRACE</li>
-                <li>Enjoy being a $BRACE holder!</li>
-            </ul>
-        </section>
-        
-        <!-- This is his story: Section -->
-        <section id="full-story">
-            <h2>This is Wesley's full story</h2>
-            <iframe src="https://www.youtube.com/embed/QUy2z9k5KFA?si=70sw17m3cWBouO8f" allowfullscreen></iframe>
-            <div>
-            <a href="https://www.dailymail.co.uk/femail/article-3471545/The-cutest-brace-face-Adorable-golden-retriever-puppy-wear-BRACES-instant-hit-online.html" target="_blank">Daily Mail Article</a> |
-            <a href="https://www.reddit.com/r/aww/comments/ve5kn8/oc_golden_retriever_gets_his_braces_removed/" target="_blank">Reddit Post</a>
-            </div>
-        </section>
-        
-        <!-- Disclaimer Section -->
-        <section id="disclaimer" class="disclaimer">
-            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return. It is purely for entertainment purposes.</p>
-        </section>
-    </div>
 
-    <footer>
-        <p>© 2025 Brace Dog. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://x.com/Brace_Dog" target="_blank">X/Twitter</a> |
-            <a href="https://t.me/BraceDog" target="_blank">Telegram</a>
+        <!-- Tokenomics Section -->
+        <section id="tokenomics" class="scroll-mt-20">
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold gradient-text mb-8">Tokenomics</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-gray-50 rounded-2xl">
+                        <p class="font-semibold text-lg">Supply</p>
+                        <p class="text-2xl text-primary">1,000,000,000</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl">
+                        <p class="font-semibold text-lg">Tax</p>
+                        <p class="text-2xl text-primary">0%</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl">
+                        <p class="font-semibold text-lg">LP Status</p>
+                        <p class="text-2xl text-primary">Locked</p>
+                    </div>
+                </div>
+                <div class="mt-8 p-4 bg-gray-50 rounded-xl">
+                    <p class="font-mono text-sm break-all">Token: gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Buy Section -->
+        <section id="how-to-buy" class="scroll-mt-20">
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold gradient-text mb-8">How to Buy</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-gray-50 rounded-xl">
+                            <span class="text-2xl mr-4">1️⃣</span>
+                            <p>Create a wallet with <a href="https://phantom.app" class="text-primary hover:underline">Phantom</a></p>
+                        </div>
+                        <div class="flex items-center p-4 bg-gray-50 rounded-xl">
+                            <span class="text-2xl mr-4">2️⃣</span>
+                            <p>Get some $SOL</p>
+                        </div>
+                        <div class="flex items-center p-4 bg-gray-50 rounded-xl">
+                            <span class="text-2xl mr-4">3️⃣</span>
+                            <p>Swap $SOL for $BRACE</p>
+                        </div>
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden">
+                        <img src="https://i.imgur.com/yBWJI7G.jpg" alt="How to buy $BRACE" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="full-story" class="scroll-mt-20">
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold gradient-text mb-8">Wesley's Story</h2>
+                <div class="aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/QUy2z9k5KFA" allowfullscreen></iframe>
+                </div>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://www.dailymail.co.uk/femail/article-3471545/The-cutest-brace-face-Adorable-golden-retriever-puppy-wear-BRACES-instant-hit-online.html" 
+                       class="px-6 py-3 bg-primary text-white rounded-full hover:opacity-90 transition">Read Article</a>
+                    <a href="https://www.reddit.com/r/aww/comments/ve5kn8/oc_golden_retriever_gets_his_braces_removed/" 
+                       class="px-6 py-3 bg-secondary text-white rounded-full hover:opacity-90 transition">Reddit Post</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <div class="text-center text-sm text-gray-600 mt-16">
+            <p>$BRACE is a meme coin with no intrinsic value or expectation of financial return. For entertainment purposes only.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 mt-32">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <p>© 2025 Brace Dog</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="https://x.com/Brace_Dog" class="hover:opacity-80 transition">𝕏 Twitter</a>
+                <a href="https://t.me/BraceDog" class="hover:opacity-80 transition">Telegram</a>
+            </div>
         </div>
     </footer>
 </body>
