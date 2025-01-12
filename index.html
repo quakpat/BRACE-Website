@@ -204,46 +204,40 @@
         </section>
 
         <!-- How to Buy Section -->
-        <section id="how-to-buy" class="scroll-mt-20">
-            <div class="bg-white rounded-3xl p-8 shadow-xl">
-                <h2 class="text-4xl font-bold gradient-text mb-8">How to Buy</h2>
-                <div class="space-y-8">
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold">1</div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Create a Phantom Wallet</h3>
-                            <p class="text-gray-700">Download Phantom Wallet from <a href="https://phantom.app" target="_blank" class="gradient-text hover:opacity-80 transition">phantom.app</a> and set up your wallet.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold">2</div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Add SOL to your wallet</h3>
-                            <p class="text-gray-700">Purchase SOL from an exchange and send it to your Phantom Wallet.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold">3</div>
-                        <div class="w-full">
-                            <h3 class="text-xl font-semibold mb-2">Connect your wallet & swap</h3>
-                            <p class="text-gray-700 mb-4">Connect your Phantom Wallet and swap SOL for $BRACE using Jupiter Exchange below.</p>
-                            <div class="flex flex-col items-start gap-4">
-                                <button id="connect-wallet" class="connect-wallet-button">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
-                                            <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                        Connect Phantom Wallet
+        <div class="bg-card border-black border-t-2" id="how-to-buy">
+            <div class="container mx-auto py-20">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="text-6xl text-white font-extrabold uppercase mb-16 text-shadow">How to Buy</h2>
+                    <div class="flex flex-col md:flex-row w-full gap-16">
+                        <div class="flex justify-center w-full order-2 md:order-1">
+                            <div class="w-full flex md:items-center justify-end md:justify-between">
+                                <div class="border-black border-2 w-full p-2">
+                                    <h3 class="mb-2 text-white text-3xl text-shadow tracking-wide font-extrabold uppercase">Swap</h3>
+                                    <div class="border-black border-2 bg-secondary flex flex-col justify-center">
+                                        <iframe 
+                                            src="https://jup.ag/swap/SOL-APPLE" 
+                                            frameborder="0"
+                                            title="Jupiter Swap"
+                                            style="width: 100%; height: 600px; border: none;"
+                                        ></iframe>
                                     </div>
-                                </button>
-                                <div id="wallet-status" class="text-gray-600 font-medium"></div>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Additional content for the How to Buy section -->
+                        <div class="flex-1 text-center md:text-left">
+                            <p class="text-white mb-4">Follow these steps to buy:</p>
+                            <ol class="list-decimal list-inside text-white">
+                                <li>Connect your Phantom wallet.</li>
+                                <li>Select the tokens you want to swap.</li>
+                                <li>Confirm the transaction.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- Disclaimer -->
         <div class="text-center text-sm text-gray-600 mt-16">
