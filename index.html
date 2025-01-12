@@ -212,12 +212,8 @@
                                 </button>
                                 <div id="wallet-status" class="text-gray-600 font-medium"></div>
                                 
-                                <!-- Jupiter Terminal Container -->
-                                <div class="w-full mt-4">
-                                    <div id="jupiter-terminal-container" class="w-full">
-                                        <div id="jupiter-terminal"></div>
-                                    </div>
-                                </div>
+                                <!-- Target location for Jupiter Terminal -->
+                                <div id="jupiter-target-location" class="w-full mt-4"></div>
                             </div>
                         </div>
                     </div>
@@ -297,6 +293,13 @@
         </div>
     </div>
 
+    <!-- Keep the original container at the bottom for initialization -->
+    <div class="container mx-auto px-4 py-8" id="original-jupiter-container">
+        <div id="jupiter-terminal-container" class="w-full max-w-2xl mx-auto">
+            <div id="jupiter-terminal"></div>
+        </div>
+    </div>
+
     <script>
     // Initialize Jupiter Terminal
     window.onload = function() {
@@ -315,6 +318,19 @@
                 borderRadius: '16px',
             }
         });
+
+        // Wait a short moment for Jupiter to initialize, then move it
+        setTimeout(() => {
+            const jupiterContainer = document.getElementById('jupiter-terminal-container');
+            const targetLocation = document.getElementById('jupiter-target-location');
+            const originalContainer = document.getElementById('original-jupiter-container');
+
+            if (jupiterContainer && targetLocation) {
+                targetLocation.appendChild(jupiterContainer);
+                // Hide the original container
+                originalContainer.style.display = 'none';
+            }
+        }, 1000);
     };
 
     // Wallet connection logic remains unchanged
