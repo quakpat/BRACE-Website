@@ -94,7 +94,7 @@
             transform: translateY(0);
         }
     </style>
-    <script src="https://terminal.jup.ag/main-v1.js" data-preload></script>
+    <script src="https://terminal.jup.ag/main-v2.js"></script>
 </head>
 <body class="bg-gradient-to-b from-[#d5bf9b] to-[#f9f4f0] min-h-screen">
     <!-- Modern floating navigation -->
@@ -262,47 +262,45 @@
     </footer>
 
     <div class="container mx-auto px-4 py-8">
-        <!-- Jupiter Terminal -->
-        <div id="integrated-terminal" style="width: 100%; height: 600px; margin: 0 auto; max-width: 500px;"></div>
+        <div id="jupiter-terminal-container" class="w-full max-w-2xl mx-auto">
+            <div id="jupiter-terminal"></div>
+        </div>
     </div>
 
-    <!-- Jupiter initialization -->
-    <script src="https://terminal.jup.ag/main-v1.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                window.Jupiter.init({
-                    mode: "integrated",
-                    endpoint: "https://api.mainnet-beta.solana.com",
-                    integratedTargetId: "integrated-terminal",
-                    defaultExplorer: "Solscan",
-                    defaultPair: {
-                        fromMint: "So11111111111111111111111111111111111111112",
-                        toMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump"
-                    },
-                    containerStyles: {
-                        width: '100%',
-                        height: '600px',
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '16px',
-                        background: 'white',
-                    }
-                });
-            }, 1000); // Small delay to ensure everything is loaded
-        });
-    </script>
+        // Initialize Jupiter Terminal
+        window.onload = function() {
+            window.Jupiter.init({
+                displayMode: 'integrated',
+                integratedTargetId: 'jupiter-terminal',
+                defaultExplorer: 'Solscan',
+                defaultPair: {
+                    fromMint: 'So11111111111111111111111111111111111111112', // SOL
+                    toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
+                },
+                containerStyles: {
+                    width: '100%',
+                    height: '600px',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: '16px',
+                }
+            });
+        };
 
-    <!-- Keep the wallet connection script separate -->
-    <script>
+        // Wallet connection logic
         async function connectPhantomWallet() {
             try {
                 const { solana } = window;
+                
                 if (!solana?.isPhantom) {
                     alert('Please install Phantom wallet!');
                     return;
                 }
+
                 const response = await solana.connect();
                 const publicKey = response.publicKey.toString();
+                console.log('Connected with Public Key:', publicKey);
+                
                 document.getElementById('wallet-status').textContent = 'Connected: ' + publicKey.slice(0,4) + '...' + publicKey.slice(-4);
             } catch (err) {
                 console.error(err);
