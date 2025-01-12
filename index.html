@@ -36,6 +36,44 @@
             background-clip: text;
             color: transparent;
         }
+
+        .scroll-container {
+            overflow: hidden;
+            background: var(--primary);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 12px 0;
+        }
+
+        .scrolling-text {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-left 20s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .brace-text {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 0 20px;
+            flex-shrink: 0;
+        }
+
+        /* Create a duplicate set of text for seamless scrolling */
+        .scrolling-wrapper {
+            display: flex;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-b from-[#d5bf9b] to-[#f9f4f0] min-h-screen">
@@ -189,19 +227,31 @@
     </footer>
 
     <div class="scroll-container">
-        <div class="scrolling-text">
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
-            <span class="brace-text">$BRACE</span>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-text">
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+            </div>
+            <div class="scrolling-text">
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+                <span class="brace-text">$BRACE</span>
+            </div>
         </div>
     </div>
 </body>
