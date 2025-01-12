@@ -291,7 +291,7 @@
                     defaultExplorer: 'Solscan',
                     defaultPair: {
                         fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                        toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
+                        toMint: 'H33XL6HHDReCVRgSApZpsXM7Hy7JGyLztRJaGxjapump'  // Your token
                     },
                     containerStyles: {
                         width: '100%',
@@ -314,11 +314,11 @@
         function loadJupiterScript() {
             const script = document.createElement('script');
             script.src = 'https://terminal.jup.ag/main-v2.js';
-            script.onload = function () {
+            script.onload = function() {
                 console.log('Jupiter script loaded successfully.');
                 initJupiter();
             };
-            script.onerror = function () {
+            script.onerror = function() {
                 console.error('Failed to load Jupiter script.');
                 const terminal = document.getElementById('jupiter-terminal');
                 if (terminal) {
@@ -328,13 +328,8 @@
             document.body.appendChild(script);
         }
 
-        // Start the process when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            const terminalContainer = document.getElementById('jupiter-terminal-container');
-            if (!terminalContainer) {
-                console.error('Jupiter terminal container is missing from the DOM.');
-                return;
-            }
+        // Start the process when the DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
             console.log('Loading Jupiter script...');
             loadJupiterScript();
         });
