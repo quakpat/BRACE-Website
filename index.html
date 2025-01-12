@@ -276,53 +276,72 @@
 
     <div class="container mx-auto px-4 py-8">
         <div id="jupiter-terminal-container" class="w-full max-w-2xl mx-auto">
-            <!-- Jupiter Terminal with loading state -->
             <div id="jupiter-terminal" class="flex items-center justify-center">
                 <p>Loading Jupiter terminal...</p>
             </div>
         </div>
     </div>
 
-    <script src="https://terminal.jup.ag/main-v2.js"></script>
     <script>
-        // Wait for both DOM and Jupiter script to be fully loaded
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                const terminalContainer = document.getElementById('jupiter-terminal');
-                
-                // Ensure the container exists
-                if (!terminalContainer) {
-                    console.error('Jupiter terminal container not found.');
-                    return;
-                }
+        // Create a function to check if element exists
+        function checkElementExists() {
+            const element = document.getElementById('jupiter-terminal');
+            if (element) {
+                console.log('Jupiter terminal element found, initializing...');
+                initJupiter();
+            } else {
+                console.log('Waiting for Jupiter terminal element...');
+                setTimeout(checkElementExists, 100);
+            }
+        }
 
-                // Initialize Jupiter with error handling
-                try {
-                    console.log('Initializing Jupiter terminal...');
-                    window.Jupiter.init({
-                        displayMode: 'integrated',
-                        integratedTargetId: 'jupiter-terminal', // Make sure this matches the div ID exactly
-                        defaultExplorer: 'Solscan',
-                        defaultPair: {
-                            fromMint: 'So11111111111111111111111111111111111111112', // SOL
-                            toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'  // BRACE
-                        },
-                        containerStyles: {
-                            width: '100%',
-                            height: '600px',
-                            border: '1px solid #E5E7EB',
-                            borderRadius: '16px',
-                            display: 'block',
-                            visibility: 'visible',
-                        }
-                    });
-                    console.log('Jupiter terminal initialized successfully.');
-                } catch (error) {
-                    console.error('Failed to initialize Jupiter terminal:', error);
-                    terminalContainer.innerHTML = `<p class="text-red-600">Failed to load the Jupiter terminal. Please try again later.</p>`;
+        // Initialize Jupiter function
+        function initJupiter() {
+            try {
+                console.log('Starting Jupiter initialization...');
+                window.Jupiter.init({
+                    displayMode: 'integrated',
+                    integratedTargetId: 'jupiter-terminal',
+                    defaultExplorer: 'Solscan',
+                    defaultPair: {
+                        fromMint: 'So11111111111111111111111111111111111111112',
+                        toMint: 'gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump'
+                    },
+                    containerStyles: {
+                        width: '100%',
+                        height: '600px',
+                        border: '1px solid #E5E7EB',
+                        borderRadius: '16px',
+                        display: 'block',
+                        visibility: 'visible',
+                    }
+                });
+                console.log('Jupiter initialization completed');
+            } catch (error) {
+                console.error('Jupiter initialization failed:', error);
+                const terminal = document.getElementById('jupiter-terminal');
+                if (terminal) {
+                    terminal.innerHTML = `<p class="text-red-600">Failed to load the Jupiter terminal. Please try again later.</p>`;
                 }
-            }, 1000); // Added a 1-second delay to ensure everything is loaded
-        });
+            }
+        }
+
+        // Load Jupiter script dynamically
+        function loadJupiterScript() {
+            const script = document.createElement('script');
+            script.src = 'https://terminal.jup.ag/main-v2.js';
+            script.onload = function() {
+                console.log('Jupiter script loaded');
+                checkElementExists();
+            };
+            script.onerror = function() {
+                console.error('Failed to load Jupiter script');
+            };
+            document.body.appendChild(script);
+        }
+
+        // Start the process when the DOM is ready
+        document.addEventListener('DOMContentLoaded', loadJupiterScript);
 
         // Wallet connection logic
         async function connectPhantomWallet() {
