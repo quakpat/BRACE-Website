@@ -204,32 +204,49 @@
         </section>
 
         <!-- How to Buy Section -->
-        <div class="bg-card border-black border-t-2" id="how-to-buy">
-            <div class="container mx-auto py-20">
-                <div class="flex flex-col items-center justify-center">
-                    <h2 class="text-6xl text-white font-extrabold uppercase mb-16 text-shadow">How to Buy</h2>
-                    <div class="flex flex-col md:flex-row w-full gap-16">
-                        <div class="flex justify-center w-full order-2 md:order-1">
-                            <div class="w-full flex md:items-center justify-end md:justify-between">
-                                <div class="border-black border-2 w-full p-2">
-                                    <h3 class="mb-2 text-white text-3xl text-shadow tracking-wide font-extrabold uppercase">Swap</h3>
-                                    <div class="border-black border-2 bg-secondary flex flex-col justify-center">
-                                        <!-- Empty div for future integration -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional content for the How to Buy section -->
-                        <div class="flex-1 text-center md:text-left">
-                            <p class="text-white mb-4">Follow these steps to buy:</p>
-                            <ol class="list-decimal list-inside text-white">
-                                <li>Connect your Phantom wallet.</li>
-                                <li>Select the tokens you want to swap.</li>
-                                <li>Confirm the transaction.</li>
+        <section id="how-to-buy" class="scroll-mt-20">
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold gradient-text mb-8">How to Buy</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-semibold text-gray-800">Steps to buy:</h3>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                                <li>Connect your Phantom wallet</li>
+                                <li>Select the tokens you want to swap</li>
+                                <li>Confirm the transaction</li>
                             </ol>
                         </div>
                     </div>
+                    <div id="jupiter-terminal-container">
+                        <div id="jupiter-terminal"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scrolling Banner -->
+        <div class="scroll-container">
+            <div class="scrolling-wrapper">
+                <div class="scrolling-text">
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                </div>
+                <div class="scrolling-text">
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
+                    <span class="brace-text">$BRACE</span>
+                    <span class="brace-text">🦮</span>
                 </div>
             </div>
         </div>
