@@ -106,6 +106,7 @@
             margin-bottom: 2rem;
         }
     </style>
+    <script src="https://unpkg.com/@jup-ag/widget@latest"></script>
 </head>
 <body class="bg-gradient-to-b from-[#d5bf9b] to-[#f9f4f0] min-h-screen">
     <!-- Modern floating navigation -->
@@ -114,7 +115,7 @@
             <a href="#what-is" class="text-white hover:text-opacity-80 transition">$BRACE</a>
             <a href="#tokenomics" class="text-white hover:text-opacity-80 transition">Tokenomics</a>
             <a href="#how-to-buy" class="text-white hover:text-opacity-80 transition">How to Buy</a>
-            <a href="#full-story" class="text-white hover:text-opacity-80 transition">Story</a>
+            <a href="#story" class="text-white hover:text-opacity-80 transition">Story</a>
         </div>
     </nav>
 
@@ -227,8 +228,8 @@
                             </ol>
                         </div>
                     </div>
-                    <div id="jupiter-terminal-container">
-                        <div id="jupiter-terminal"></div>
+                    <div id="jupiter-terminal-container" class="min-h-[600px] rounded-xl overflow-hidden border border-gray-200">
+                        <!-- Jupiter Terminal will be mounted here -->
                     </div>
                 </div>
             </div>
@@ -286,5 +287,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("jupiter-terminal-container");
+            
+            new window.JupiterTerminal(container, {
+                endpoint: "https://api.mainnet-beta.solana.com",
+                platformFeeAndAccounts: {
+                    feeBps: 0,
+                    feeAccounts: [],
+                },
+                defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
+                defaultOutputMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump", // $BRACE token address
+                displayMode: "modal",
+            });
+        });
+    </script>
 </body>
 </html>
