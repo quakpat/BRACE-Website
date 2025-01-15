@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <div id="jupiter-terminal-container" class="min-h-[600px] rounded-xl overflow-hidden border border-gray-200">
-                        <!-- Jupiter Terminal will be mounted here -->
+                        <div id="jupiter-terminal"></div>
                     </div>
                 </div>
             </div>
@@ -289,7 +289,7 @@
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById("jupiter-terminal-container");
+            const container = document.getElementById("jupiter-terminal");
 
             if (!container) {
                 console.error("Jupiter terminal container not found!");
