@@ -288,20 +288,31 @@
         </div>
     </footer>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById("jupiter-terminal-container");
-            
-            new window.JupiterTerminal(container, {
-                endpoint: "https://api.mainnet-beta.solana.com",
-                platformFeeAndAccounts: {
-                    feeBps: 0,
-                    feeAccounts: [],
-                },
-                defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
-                defaultOutputMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump", // $BRACE token address
-                displayMode: "modal",
-            });
-        });
+        window.onload = async () => {
+            try {
+                // Wait for Jupiter to be available
+                while (!window.Jupiter) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+                
+                const container = document.getElementById("jupiter-terminal-container");
+                
+                // Use Jupiter.Terminal instead of JupiterTerminal
+                new window.Jupiter.Terminal({
+                    containerElement: container,
+                    endpoint: "https://api.mainnet-beta.solana.com",
+                    platformFeeAndAccounts: {
+                        feeBps: 0,
+                        feeAccounts: [],
+                    },
+                    defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
+                    defaultOutputMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump", // $BRACE token address
+                    displayMode: "modal",
+                });
+            } catch (err) {
+                console.error("Error initializing Jupiter Terminal:", err);
+            }
+        };
     </script>
 </body>
 </html>
