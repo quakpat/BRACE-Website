@@ -288,37 +288,49 @@
         </div>
     </footer>
     <script>
-        window.addEventListener('load', async () => {
-            try {
-                const terminal = window.Jupiter.Terminal;
-                const container = document.getElementById("jupiter-terminal");
+        window.addEventListener("load", async () => {
+            const checkInterval = setInterval(() => {
+                if (window.Jupiter?.Terminal) {
+                    clearInterval(checkInterval);
 
-                if (!container) {
-                    console.error("Jupiter terminal container not found!");
-                    return;
-                }
+                    const terminal = window.Jupiter.Terminal;
+                    const container = document.getElementById("jupiter-terminal");
 
-                terminal.render({
-                    containerElement: container,
-                    endpoint: "https://api.mainnet-beta.solana.com",
-                    platformFeeAndAccounts: {
-                        feeBps: 0,
-                        feeAccounts: [],
-                    },
-                    defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
-                    defaultOutputMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump", // BRACE
-                    displayMode: "inline",
-                    integratedTargetId: "jupiter-terminal",
-                    containerStyles: {
-                        display: 'block',
-                        width: '100%',
-                        height: '600px',
-                        borderRadius: '12px',
+                    if (!container) {
+                        console.error("Jupiter terminal container not found!");
+                        return;
                     }
-                });
-            } catch (err) {
-                console.error("Error initializing Jupiter Terminal:", err);
-            }
+
+                    try {
+                        terminal.render({
+                            containerElement: container,
+                            endpoint: "https://api.mainnet-beta.solana.com",
+                            platformFeeAndAccounts: {
+                                feeBps: 0,
+                                feeAccounts: [],
+                            },
+                            defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
+                            defaultOutputMint: "gpG5yhHYMojSkTaecXW2tjAL7X5gL3Jz3A66jHEpump", // BRACE
+                            displayMode: "inline",
+                            containerStyles: {
+                                display: "block",
+                                width: "100%",
+                                height: "600px",
+                                borderRadius: "12px",
+                            },
+                        });
+                    } catch (err) {
+                        console.error("Error initializing Jupiter Terminal:", err);
+                    }
+                }
+            }, 500);
+
+            setTimeout(() => {
+                if (!window.Jupiter?.Terminal) {
+                    clearInterval(checkInterval);
+                    console.error("Jupiter Terminal script failed to load.");
+                }
+            }, 5000);
         });
     </script>
 </body>
